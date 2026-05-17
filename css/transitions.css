@@ -1,0 +1,118 @@
+/* ============================================
+   TRANSITIONS.CSS — Disk-eject page transitions
+   ============================================ */
+
+/* ── Section visibility states ── */
+.section-wrapper {
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-wrapper.active {
+  display: block;
+  animation: sectionEnter 0.55s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.section-wrapper.exiting {
+  display: block;
+  animation: sectionEject 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
+  pointer-events: none;
+}
+
+/* ── Disk Eject — outgoing ── */
+@keyframes sectionEject {
+  0%   { transform: translateX(0) skewX(0deg); opacity: 1; }
+  60%  { transform: translateX(60%) skewX(-8deg); opacity: 0.4; }
+  100% { transform: translateX(110%) skewX(-12deg); opacity: 0; }
+}
+
+/* ── Click in — incoming ── */
+@keyframes sectionEnter {
+  0%   { transform: translateX(-110%) skewX(12deg); opacity: 0; }
+  60%  { transform: translateX(-6%) skewX(-3deg); opacity: 0.8; }
+  80%  { transform: translateX(2%) skewX(1deg); opacity: 1; }
+  100% { transform: translateX(0) skewX(0deg); opacity: 1; }
+}
+
+/* Reverse direction if going backward */
+.section-wrapper.exiting.reverse {
+  animation: sectionEjectReverse 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.section-wrapper.active.reverse {
+  animation: sectionEnterReverse 0.55s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes sectionEjectReverse {
+  0%   { transform: translateX(0) skewX(0deg); opacity: 1; }
+  60%  { transform: translateX(-60%) skewX(8deg); opacity: 0.4; }
+  100% { transform: translateX(-110%) skewX(12deg); opacity: 0; }
+}
+
+@keyframes sectionEnterReverse {
+  0%   { transform: translateX(110%) skewX(-12deg); opacity: 0; }
+  60%  { transform: translateX(6%) skewX(3deg); opacity: 0.8; }
+  80%  { transform: translateX(-2%) skewX(-1deg); opacity: 1; }
+  100% { transform: translateX(0) skewX(0deg); opacity: 1; }
+}
+
+/* ── Scanline flash between transitions ── */
+#transition-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,65,0.08) 0px,
+    rgba(0,255,65,0.08) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0;
+}
+
+#transition-flash.flash {
+  animation: scanFlash 0.4s ease;
+}
+
+@keyframes scanFlash {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { opacity: 0.3; }
+  80%  { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+/* ── Section entry content animations ── */
+.section-wrapper.active .fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+.section-wrapper.active .fade-up:nth-child(1) { animation-delay: 0.1s; }
+.section-wrapper.active .fade-up:nth-child(2) { animation-delay: 0.2s; }
+.section-wrapper.active .fade-up:nth-child(3) { animation-delay: 0.3s; }
+.section-wrapper.active .fade-up:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mascot spring entry ── */
+.mascot-wrap {
+  position: fixed;
+  bottom: -120px;
+  right: 2rem;
+  z-index: 500;
+  transition: bottom 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events: none;
+}
+
+.mascot-wrap.visible {
+  bottom: 5rem;
+}
+
+.mascot-wrap.hiding {
+  transition: bottom 0.3s ease-in;
+  bottom: -120px;
+}

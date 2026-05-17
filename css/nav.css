@@ -1,0 +1,166 @@
+/* ============================================
+   NAV.CSS — Navigation bar styles
+   ============================================ */
+
+#main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 12, 10, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,255,65,0.2);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+#main-nav.visible {
+  transform: translateY(0);
+}
+
+/* ── Logo / Brand ── */
+.nav-brand {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px var(--green-glow);
+  white-space: nowrap;
+}
+
+.nav-brand span {
+  color: var(--amber);
+}
+
+/* ── Nav links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--green-dim);
+  padding: 6px 10px;
+  letter-spacing: 0.08em;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-links li a::before {
+  content: '[';
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--amber);
+}
+
+.nav-links li a::after {
+  content: ']';
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--amber);
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green-glow);
+}
+
+.nav-links li a:hover::before,
+.nav-links li a:hover::after,
+.nav-links li a.active::before,
+.nav-links li a.active::after {
+  opacity: 1;
+}
+
+/* ── Section number indicators ── */
+.nav-links li a .nav-num {
+  font-size: 0.7rem;
+  color: var(--amber);
+  vertical-align: super;
+  margin-right: 2px;
+  opacity: 0.7;
+}
+
+/* ── Mobile hamburger ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--green);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── Status bar on right ── */
+.nav-status {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--green-dim);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-status .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--green);
+  animation: cursorPulse 1.5s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 56px;
+    left: 0; right: 0;
+    background: rgba(10,12,10,0.98);
+    border-bottom: 1px solid rgba(0,255,65,0.2);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(0,255,65,0.08);
+  }
+
+  .nav-toggle { display: flex; }
+  .nav-status  { display: none; }
+}

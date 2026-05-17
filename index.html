@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BHARATH R — Portfolio OS v2.5</title>
+  <meta name="description" content="Bharath R — EEE Engineer, Full-Stack Dev, Circuit Simulator. #FromVoltageToVibes">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/boot.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/mascots.css">
+</head>
+<body>
+
+  <!-- ══ ANIMATED GRID BACKGROUND ══ -->
+  <div class="grid-bg"></div>
+
+  <!-- ══ CUSTOM CURSOR ══ -->
+ <div id="cursor"><div class="dot"></div></div>
+<canvas id="car-cursor" style="position:fixed;top:0;left:0;pointer-events:none;z-index:99998;"></canvas>
+
+  <!-- ══ GLITCH FLASH OVERLAY ══ -->
+  <div id="glitch-flash" class="glitch-flash"></div>
+
+  <!-- ══ TRANSITION FLASH ══ -->
+  <div id="transition-flash"></div>
+
+  <!-- ══ MODAL OVERLAY ══ -->
+  <div id="modal-overlay"></div>
+
+  <!-- ══ MASCOT WRAP ══ -->
+  <div id="mascot-wrap" class="mascot-wrap">
+    <!-- Mascot injected here by mascots.js -->
+  </div>
+
+  <!-- ════════════════════════════════════
+       BOOT SCREEN
+       ════════════════════════════════════ -->
+  <div id="boot-screen">
+    <div class="boot-container">
+      <div class="boot-header">
+        <span>PORTFOLIO_OS v2.5</span>
+        <span>BHARATH R <span class="blink">█</span></span>
+        <span id="boot-time">00:00:00</span>
+      </div>
+      <div class="boot-log" id="boot-log-area"></div>
+      <div class="boot-progress-wrap">
+        <span class="boot-progress-label">LOADING</span>
+        <div class="boot-progress-bar">
+          <div class="boot-progress-fill" id="boot-progress-fill"></div>
+        </div>
+        <span class="boot-progress-pct" id="boot-progress-pct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TITLE SCREEN ══ -->
+  <div id="boot-title-screen" class="boot-title-screen">
+    <div class="boot-name glitch" data-text="BHARATH R">BHARATH R</div>
+    <div class="boot-tagline">#FromVoltageToVibes</div>
+    <div class="boot-prompt blink">[ PRESS ENTER OR CLICK TO CONTINUE ]</div>
+  </div>
+
+  <!-- ════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════ -->
+  <nav id="main-nav">
+    <div class="nav-brand">B<span>.</span>R</div>
+
+    <ul class="nav-links">
+      <li><a data-nav="hero"       id="nav-hero"       href="#"><span class="nav-num">01</span>HOME</a></li>
+      <li><a data-nav="about"      id="nav-about"      href="#"><span class="nav-num">02</span>ABOUT</a></li>
+      <li><a data-nav="css"        id="nav-css"        href="#"><span class="nav-num">03</span>WEB</a></li>
+      <li><a data-nav="sims"       id="nav-sims"       href="#"><span class="nav-num">04</span>CIRCUITS</a></li>
+      <li><a data-nav="hackathons" id="nav-hackathons" href="#"><span class="nav-num">05</span>HACKATHONS</a></li>
+      <li><a data-nav="gokart"     id="nav-gokart"     href="#"><span class="nav-num">06</span>BUILDS</a></li>
+      <li><a data-nav="skills"     id="nav-skills"     href="#"><span class="nav-num">07</span>SKILLS</a></li>
+      <li><a data-nav="contact"    id="nav-contact"    href="#"><span class="nav-num">08</span>TRANSMIT</a></li>
+    </ul>
+
+    <div class="nav-status">
+      <div class="dot"></div>
+      <span>ONLINE</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ════════════════════════════════════
+       SECTION 1 — HERO
+       ════════════════════════════════════ -->
+ <section id="section-hero" class="sec" style="display:none">
+  <div class="hero-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="hero-sidebar left">
+      <a class="sidebar-item" data-nav="hero" href="#">HOME</a>
+      <a class="sidebar-item" data-nav="about" href="#">ABOUT</a>
+      <a class="sidebar-item" data-nav="css" href="#">WEB</a>
+      <a class="sidebar-item" data-nav="sims" href="#">CIRCUITS</a>
+    </div>
+
+    <!-- CENTER -->
+    <div class="hero-center">
+      <div class="hero-os">// PORTFOLIO_OS v2.5 — USER LOADED</div>
+      <h1 class="hero-name glitch" data-text="BHARATH R">BHARATH R</h1>
+      <div class="hero-tag">#FromVoltageToVibes</div>
+
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-inner">
+          <div class="hero-photo-front">
+            <img src="images/profile/your-photo.jpg" alt="Bharath R">
+          </div>
+          <div class="hero-photo-back">
+            <img src="images/profile/your-avatar.gif" alt="Bharath R">
+          </div>
+        </div>
+      </div>
+
+      <p class="hero-bio">
+        EEE undergrad at MITS, 3rd year. Bridging hardware and the web —
+        MATLAB &amp; LTspice in the morning, React &amp; Node at night.
+        Part engineer, part vibe-coder.
+      </p>
+      <div class="hero-cta-row">
+        <button class="btn-primary" onclick="Navigation.goTo('css')">▶ VIEW PROJECTS</button>
+        <button class="btn-secondary" onclick="Navigation.goTo('contact')">⬡ TRANSMIT MSG</button>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="hero-sidebar right">
+      <a class="sidebar-item" data-nav="hackathons" href="#">HACKATHONS</a>
+      <a class="sidebar-item" data-nav="gokart" href="#">PHYSICAL BUILDS</a>
+      <a class="sidebar-item" data-nav="skills" href="#">SKILLS</a>
+      <a class="sidebar-item" data-nav="contact" href="#">TRANSMIT</a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ════════════════════════════════════
+       SECTION 2 — ABOUT ME
+       ════════════════════════════════════ -->
+  <section id="section-about" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">02 // ABOUT.EXE</div>
+    <h2>WHO AM I</h2>
+    <div class="section-divider"></div>
+
+    <div class="about-grid">
+      <div class="about-bio-block fade-up">
+        <p class="terminal-prompt">I'm someone who likes to bridge the gap between hardware and the web.</p>
+        <br>
+        <p class="terminal-prompt">Most days, you'll find me toggling between simulating circuits in MATLAB and LTspice or writing Embedded C for microcontrollers, then switching gears to build out full-stack apps and UI/UX projects.</p>
+        <br>
+        <p class="terminal-prompt">I really enjoy the mix of technical rigor—like power systems and Python scripting—with the more creative "vibe coding" side of CSS, making sure the tech works perfectly under the hood while looking just as good on the surface.</p>
+
+        <div class="about-fun-facts" style="margin-top:2rem">
+          <div class="fun-facts-title">// FUN_FACTS.TXT</div>
+          <p style="font-size:.88rem;color:var(--grey-light);line-height:1.8">
+            I'm an Electrical and Electronics Engineering student with a Stark-inspired drive to build things
+            that actually work. When I'm not in the workshop, I'm usually chasing high-speed precision in
+            racing games or finding my rhythm on long cycling routes. An avid reader who appreciates the
+            logic behind a great story just as much as a well-designed circuit.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-details fade-up">
+        <div class="detail-row">
+          <span class="detail-label">COLLEGE</span>
+          <span class="detail-val">Muthoot Institute of Technology and Science</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">DEGREE</span>
+          <span class="detail-val">B.Tech — Electrical &amp; Electronics Engineering</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">YEAR</span>
+          <span class="detail-val">3rd Year (Ongoing)</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">LOCATION</span>
+          <span class="detail-val">Kerala, India</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">MODE</span>
+          <span class="detail-val">Builder Mode — Always ON</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">INTERESTS</span>
+          <span class="detail-val">Circuits · Web Dev · Racing Games · Cycling · Reading</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 3 — CSS & WEB PROJECTS
+       ════════════════════════════════════ -->
+  <section id="section-css" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">03 // WEB_PROJECTS</div>
+    <h2>CSS &amp; WEB PROJECTS</h2>
+    <div class="section-divider"></div>
+    <p class="section-intro fade-up">// FULL-STACK BUILDS · UI/UX · VIBE CODED</p>
+
+    <div class="cards-grid fade-up">
+
+      <!-- PROJECT 1: Food & Stories -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'FOOD &amp; STORIES',
+        tag: 'FULL-STACK · REACT · NODE',
+        desc: 'A full-stack web application built around the concept of food and the stories behind dishes. Features recipe exploration, user storytelling, and a rich interactive UI.',
+        images: ['images/projects/css/food-stories-1.jpg','images/projects/css/food-stories-2.jpg','images/projects/css/food-stories-3.jpg'],
+        links: { DEMO: &quot;https://food-and-stories.vercel.app/&quot;, GITHUB: &quot;&quot; }
+      })">
+       <div class="card-thumb">
+  <iframe src="https://food-and-stories.vercel.app/" 
+    style="width:100%;height:100%;border:none;pointer-events:none;
+    transform:scale(0.5);transform-origin:top left;
+    width:200%;height:200%;" 
+    loading="lazy" scrolling="no">
+  </iframe>
+</div>
+        <div class="card-body">
+          <div class="card-tag">FULL-STACK · VERCEL</div>
+          <div class="card-title">FOOD &amp; STORIES</div>
+          <p class="card-desc">A full-stack web app exploring the stories behind food — rich UI, interactive recipes, and real backend integration.</p>
+          <div class="card-links">
+            <a href="https://food-and-stories.vercel.app/" target="_blank" class="card-link">[DEMO]</a>
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Space Runner -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'SPACE RUNNER',
+        tag: 'WEB GAME · JAVASCRIPT · CSS',
+        desc: 'A fun browser-based space runner game built with vanilla JavaScript and CSS animations. Dodge obstacles, survive in space.',
+        images: ['images/projects/css/space-runner-1.jpg','images/projects/css/space-runner-2.jpg','images/projects/css/space-runner-3.jpg'],
+        links: { GITHUB: &quot;https://github.com/bharath999-git/space-runner&quot; }
+      })">
+        <div class="card-thumb">
+  <iframe src="https://github.com/bharath999-git/space-runner" 
+    style="width:200%;height:200%;border:none;pointer-events:none;
+    transform:scale(0.5);transform-origin:top left;" 
+    loading="lazy" scrolling="no">
+  </iframe>
+</div>
+        <div class="card-body">
+          <div class="card-tag">WEB GAME · JS · CSS</div>
+          <div class="card-title">SPACE RUNNER</div>
+          <p class="card-desc">Browser-based space runner game — pure JavaScript + CSS animations. Dodge, survive, score.</p>
+          <div class="card-links">
+            <a href="https://github.com/bharath999-git/space-runner" target="_blank" class="card-link">[GITHUB]</a>
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Calculator -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'MISLEADING CALCULATOR',
+        tag: 'FUN · JAVASCRIPT · CSS',
+        desc: 'A basic but intentionally misleading calculator — not everything is what it seems. A fun experiment in UI deception.',
+        images: ['images/projects/css/calc-1.jpg','images/projects/css/calc-2.jpg','images/projects/css/calc-3.jpg'],
+        links: { GITHUB: &quot;https://github.com/bharath999-git/CALCULATOR-&quot; }
+      })">
+       <div class="card-thumb">
+  <iframe src="https://github.com/bharath999-git/CALCULATOR-" 
+    style="width:200%;height:200%;border:none;pointer-events:none;
+    transform:scale(0.5);transform-origin:top left;" 
+    loading="lazy" scrolling="no">
+  </iframe>
+</div>
+        <div class="card-body">
+          <div class="card-tag">FUN PROJECT · JS</div>
+          <div class="card-title">MISLEADING CALCULATOR</div>
+          <p class="card-desc">A basic calculator that isn't quite what it seems — a fun UI deception experiment in vanilla JS.</p>
+          <div class="card-links">
+            <a href="https://github.com/bharath999-git/CALCULATOR-" target="_blank" class="card-link">[GITHUB]</a>
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="add-project-btn" onclick="Projects.openAddForm('css')">
+      ＋ ADD PROJECT
+    </button>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 4 — SIMULATIONS & CIRCUITS
+       ════════════════════════════════════ -->
+  <section id="section-sims" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">04 // CIRCUIT_LAB</div>
+    <h2>SIMULATIONS &amp; CIRCUITS</h2>
+    <div class="section-divider"></div>
+    <p class="sim-note fade-up">// MATLAB · LTSpice · SIMULINK · FPGA · Verilog</p>
+
+    <div class="cards-grid fade-up">
+
+      <!-- SIM 1: Digital Voting Machine -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'DIGITAL VOTING MACHINE',
+        tag: 'MATLAB · APP DESIGNER',
+        desc: 'A functional digital voting machine application built using MATLAB App Designer. Features candidate registration, secure voting flow, and live result display.',
+        images: ['images/projects/circuits/voting-1.jpg','images/projects/circuits/voting-2.jpg','images/projects/circuits/voting-3.jpg'],
+        links: {}
+      })">
+        <div class="card-thumb">
+  <img src="images/projects/circuits/voting-1.jpg" 
+    alt="Digital Voting Machine"
+    style="width:100%;height:100%;object-fit:cover;">
+</div>
+        <div class="card-body">
+          <div class="card-tag">MATLAB · APP DESIGNER</div>
+          <div class="card-title">DIGITAL VOTING MACHINE</div>
+          <p class="card-desc">Functional digital voting application with candidate management and live result tallying. Built in MATLAB App Designer.</p>
+          <div class="card-links">
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIM 2: Digital Lock -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'DIGITAL LOCK',
+        tag: 'MATLAB · SIMULINK',
+        desc: 'A functional 4-bit digital lock system with password verification and indicator logic, simulated and designed using MATLAB Simulink.',
+        images: ['images/projects/circuits/lock-1.jpg','images/projects/circuits/lock-2.jpg','images/projects/circuits/lock-3.jpg'],
+        links: {}
+      })">
+        <div class="card-thumb">
+  <img src="images/projects/circuits/lock-1.jpg" 
+    alt="Digital Lock"
+    style="width:100%;height:100%;object-fit:cover;">
+</div>
+        <div class="card-body">
+          <div class="card-tag">MATLAB · SIMULINK</div>
+          <div class="card-title">DIGITAL LOCK</div>
+          <p class="card-desc">4-bit digital lock system with password verification and LED indicators — designed and validated in MATLAB Simulink.</p>
+          <div class="card-links">
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="add-project-btn" onclick="Projects.openAddForm('sims')">
+      ＋ ADD PROJECT
+    </button>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 5 — HACKATHONS
+       ════════════════════════════════════ -->
+  <section id="section-hackathons" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">05 // HACKATHON_LOGS</div>
+    <h2>HACKATHONS &amp; COMPETITIONS</h2>
+    <div class="section-divider"></div>
+
+    <div class="hackathon-timeline fade-up">
+
+      <!-- REVATHON 2025 -->
+      <div class="hackathon-entry">
+        <div class="hackathon-header">
+          <div class="hackathon-name">REVATHON 2025</div>
+          <div class="hackathon-result">PARTICIPATED</div>
+        </div>
+        <div class="hackathon-meta">📍 College of Engineering Chengannur, Kerala &nbsp;|&nbsp; 👥 4 Members</div>
+        <p class="hackathon-desc">Reverse engineered a Line Follower Robot and built a fully functional bot from scratch within 24 hours.</p>
+        <div class="hackathon-gallery">
+          <!-- ADD: images/hackathons/hack1.jpg + 2 more -->
+          <div class="img-slot"><img src="images/projects/hackathons/hack1-1.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack1-2.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack1-3.jpg"></div>
+        </div>
+      </div>
+
+      <!-- Useless Projects -->
+      <div class="hackathon-entry">
+        <div class="hackathon-header">
+          <div class="hackathon-name">USELESS PROJECTS — TinkerHub 2025</div>
+          <div class="hackathon-result">PARTICIPATED</div>
+        </div>
+        <div class="hackathon-meta">📍 MITS, Kochi, Kerala &nbsp;|&nbsp; 👥 2 Members</div>
+        <p class="hackathon-desc">Built <strong>Emoji Fortune Teller</strong> — a hilariously useless but technically solid project. Live at <a href="https://emoji-for-t.vercel.app" target="_blank" style="color:var(--c5)">emoji-for-t.vercel.app</a></p>
+        <div class="hackathon-gallery">
+          <!-- ADD: images/hackathons/hack2.jpg + 2 more -->
+          <div class="img-slot"><img src="images/projects/hackathons/hack2-1.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack2-2.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack2-3.jpg"></div>
+        </div>
+      </div>
+
+      <!-- GKDC -->
+      <div class="hackathon-entry">
+        <div class="hackathon-header">
+          <div class="hackathon-name">13th GKDC — Go-Kart Design Challenge</div>
+          <div class="hackathon-result" style="border-color:#ffd700;color:#ffd700">🏆 AIR 13 · 1ST IN KERALA</div>
+        </div>
+        <div class="hackathon-meta">📍 Kari Motor Speedway, Coimbatore, Tamil Nadu &nbsp;|&nbsp; 👥 MITS Motorsports (23 Members)</div>
+        <p class="hackathon-desc">Designed and built <strong>AETHON V4</strong> — a student-designed electric go-kart featuring structural chassis optimization, powertrain integration, and EV safety validation.</p>
+        <div class="hackathon-gallery">
+          <!-- ADD: images/hackathons/hack3.jpg + 2 more -->
+          <div class="img-slot"><img src="images/projects/hackathons/hack3-1.png"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack3-2.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack3-3.jpg"></div>
+        </div>
+      </div>
+
+      <!-- FlowVision -->
+      <div class="hackathon-entry">
+        <div class="hackathon-header">
+          <div class="hackathon-name">FLOWVISION AI-IoT 2025</div>
+          <div class="hackathon-result">PARTICIPATED</div>
+        </div>
+        <div class="hackathon-meta">📍 ASIET, Kalady, Kerala &nbsp;|&nbsp; 👥 3 Members</div>
+        <p class="hackathon-desc">Built a smart water flow monitoring system integrating AI and IoT for real-time detection and analysis.</p>
+        <div class="hackathon-gallery">
+          <!-- ADD: images/hackathons/hack4.jpg + 2 more -->
+          <div class="img-slot"><img src="images/projects/hackathons/hack4-1.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack4-2.jpg"></div>
+          <div class="img-slot"><img src="images/projects/hackathons/hack4-3.jpg"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="add-project-btn" onclick="Projects.openAddForm('hackathons')">
+      ＋ ADD HACKATHON
+    </button>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 6 — GO-KART & PHYSICAL BUILDS
+       ════════════════════════════════════ -->
+  <section id="section-gokart" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">06 // PHYSICAL_BUILDS</div>
+    <h2>GO-KART &amp; PHYSICAL BUILDS</h2>
+    <div class="section-divider"></div>
+    <p class="build-note fade-up">// FPGA · EV · MOTORSPORTS · HARDWARE</p>
+
+    <div class="cards-grid fade-up">
+
+      <!-- FPGA Digital Lock -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'FPGA DIGITAL LOCK',
+        tag: 'FPGA · VERILOG · SPARTAN-6',
+        desc: 'A functional 4-bit digital lock system with password verification and LED indicators, implemented on a Spartan-6 LX4 FPGA using Verilog. Includes connection design and hardware setup.',
+        extra: 'Hardware: Spartan-6 LX4 FPGA. Features: 4-bit password entry, correct/incorrect LED indicators, Verilog HDL design.',
+        images: ['images/projects/gokart/fpga-1.jpg','images/projects/gokart/fpga-2.jpg','images/projects/gokart/fpga-3.jpg'],
+        links: {}
+      })">
+       <div class="card-thumb">
+  <img src="images/projects/gokart/fpga-1.jpg" 
+    alt="FPGA Digital Lock"
+    style="width:100%;height:100%;object-fit:cover;">
+</div>
+        <div class="card-body">
+          <div class="card-tag">FPGA · VERILOG · SPARTAN-6</div>
+          <div class="card-title">FPGA DIGITAL LOCK</div>
+          <p class="card-desc">4-bit password lock on Spartan-6 LX4 FPGA. Verilog design with LED indicators and full hardware setup.</p>
+          <div class="card-links">
+            <span class="card-link">[VIDEO]</span>
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AETHON V4 Go-Kart -->
+      <div class="project-card" onclick="Modal.openStaticProject({
+        title: 'AETHON V4 — ELECTRIC GO-KART',
+        tag: 'GKDC · EV · MOTORSPORTS',
+        desc: 'Student-designed electric go-kart for the 13th GKDC. Features structural chassis optimization, EV powertrain integration, and full safety validation. Achieved AIR 13 and 1st place in Kerala.',
+        extra: 'Team: MITS Motorsports (23 members). Event: 13th GKDC at Kari Motor Speedway, Coimbatore. Result: AIR 13, 1st in Kerala.',
+        images: ['images/projects/gokart/kart-1.jpg','images/projects/gokart/kart-2.jpg','images/projects/gokart/kart-3.jpg'],
+        links: {}
+      })">
+        <div class="card-thumb">
+  <img src="images/projects/gokart/kart-1.jpg" 
+    alt="AETHON V4"
+    style="width:100%;height:100%;object-fit:cover;">
+</div>
+        <div class="card-body">
+          <div class="card-tag">EV · MOTORSPORTS · GKDC</div>
+          <div class="card-title">AETHON V4 — ELECTRIC GO-KART</div>
+          <p class="card-desc">Student EV go-kart. Chassis optimization, powertrain integration, EV safety. AIR 13 &amp; 1st in Kerala at 13th GKDC.</p>
+          <div class="card-links">
+            <span class="card-open-btn">[VIEW]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+   
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 7 — SKILLS & TOOLS
+       ════════════════════════════════════ -->
+  <section id="section-skills" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">07 // SKILLS_MATRIX</div>
+    <h2>SKILLS &amp; TOOLS</h2>
+    <div class="section-divider"></div>
+
+    <div class="skills-layout fade-up">
+
+      <!-- Engineering Skills -->
+      <div>
+        <div class="skills-group-title">// ENGINEERING &amp; HARDWARE</div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">MATLAB &amp; LTSpice</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="90%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">FPGA &amp; Verilog</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="35%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Embedded C (ESP32/Arduino)</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="50%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Power Electronics</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="40%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="skills-group-title" style="margin-top:2rem">// TIMELINE</div>
+        <div class="timeline">
+          <div class="timeline-entry">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-title">Started B.Tech EEE — MITS</div>
+            <div class="timeline-sub">Muthoot Institute of Technology &amp; Science, Kerala</div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-title">First MATLAB &amp; Circuit Projects</div>
+            <div class="timeline-sub">Digital Voting Machine · Digital Lock Simulation</div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">Joined MITS Motorsports · GKDC 13</div>
+            <div class="timeline-sub">AETHON V4 Electric Go-Kart — AIR 13, 1st Kerala</div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-title">Hackathons · Full-Stack Projects · FPGA</div>
+            <div class="timeline-sub">Revathon · FlowVision · Food &amp; Stories · Space Runner</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web / Full-Stack Skills -->
+      <div>
+        <div class="skills-group-title">// FULL-STACK &amp; DESIGN</div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">HTML · CSS · JavaScript</span>
+            <span class="skill-level">INTERMEDIATE+</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="80%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">React</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="45%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Node.js · MongoDB · Firebase</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="80%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-level">INTERMEDIATE</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="70%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">UI/UX · Vibe Coding · CSS</span>
+            <span class="skill-level">INTERMEDIATE+</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-width="95%" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="skills-group-title" style="margin-top:2rem">// ACHIEVEMENT BADGES</div>
+        <div class="badges-grid">
+          <span class="badge">⚡ CIRCUIT_WIZARD</span>
+          <span class="badge">🏎 AIR_13_GKDC</span>
+          <span class="badge">🌐 FULL_STACK</span>
+          <span class="badge">🔧 EMBEDDED_C</span>
+          <span class="badge">🎮 VIBE_CODER</span>
+          <span class="badge">🏆 1ST_IN_KERALA</span>
+          <span class="badge">🤖 FPGA_BUILDER</span>
+          <span class="badge">🚀 HACKATHON_VET</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 8 — CONTACT
+       ════════════════════════════════════ -->
+  <section id="section-contact" class="section-wrapper">
+    <div class="accent-strip"></div>
+    <div class="section-tag">08 // TRANSMIT.SH</div>
+    <h2>TRANSMIT A MESSAGE</h2>
+    <div class="section-divider"></div>
+
+    <div class="contact-layout fade-up">
+
+      <!-- Terminal form -->
+      <div class="contact-terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title-bar">TRANSMIT_TERMINAL v1.0</span>
+        </div>
+
+        <div class="contact-form-group">
+          <label class="contact-form-label">NAME</label>
+          <input class="contact-input" id="contact-name" type="text" placeholder="your_name_here" autocomplete="off">
+        </div>
+        <div class="contact-form-group">
+          <label class="contact-form-label">EMAIL</label>
+          <input class="contact-input" id="contact-email" type="email" placeholder="your@email.com" autocomplete="off">
+        </div>
+        <div class="contact-form-group">
+          <label class="contact-form-label">MESSAGE</label>
+          <textarea class="contact-textarea" id="contact-msg" placeholder="INITIALIZING TRANSMISSION..."></textarea>
+        </div>
+
+        <button class="contact-submit" id="contact-submit" onclick="submitContact()">
+          ▶ TRANSMIT
+        </button>
+        <div id="contact-feedback" style="margin-top:.8rem;font-family:var(--font-display);font-size:.95rem;color:var(--green);display:none"></div>
+      </div>
+
+      <!-- Links panel -->
+      <div class="contact-links">
+        <a href="mailto:bharathrajesh2021@gmail.com" class="contact-link-item">
+          <span class="contact-link-icon">@</span>
+          <div>
+            <div class="contact-link-label">EMAIL</div>
+            <div>bharathrajesh2021@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/bharath-r-404290323" target="_blank" class="contact-link-item">
+          <span class="contact-link-icon">in</span>
+          <div>
+            <div class="contact-link-label">LINKEDIN</div>
+            <div>bharath-r-404290323</div>
+          </div>
+        </a>
+        <a href="https://github.com/bharath999-git" target="_blank" class="contact-link-item">
+          <span class="contact-link-icon">gh</span>
+          <div>
+            <div class="contact-link-label">GITHUB</div>
+            <div>bharath999-git</div>
+          </div>
+        </a>
+        <div class="contact-link-item" style="cursor:default">
+          <span class="contact-link-icon">📍</span>
+          <div>
+            <div class="contact-link-label">LOCATION</div>
+            <div>Kerala, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════ -->
+  <script src="js/navigation.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/mascots.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/boot.js"></script>
+
+  <script>
+    /* ── Custom Cursor ── */
+    /* ── Custom Cursor + Car ── */
+const cursor = document.getElementById('cursor');
+const canvas = document.getElementById('car-cursor');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+let mouseX = 0, mouseY = 0;
+let carX = 0, carY = 0;
+let particles = [];
+let speed = 0, lastX = 0, lastY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%,-50%) scale(0.7)');
+document.addEventListener('mouseup',   () => cursor.style.transform = 'translate(-50%,-50%) scale(1)');
+
+
+function drawCar(x, y, angle, spd) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+
+  const s = 0.7 + Math.min(spd * 0.01, 0.5);
+  ctx.scale(s, s);
+
+  // Body
+  ctx.fillStyle = '#ff3333';
+  ctx.shadowColor = '#ff3333';
+  ctx.shadowBlur = 8;
+  ctx.beginPath();
+  ctx.roundRect(-18, -7, 36, 14, 4);
+  ctx.fill();
+
+  // Cockpit
+  ctx.fillStyle = 'rgba(0,229,255,0.6)';
+  ctx.shadowColor = '#00e5ff';
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  ctx.roundRect(-6, -10, 14, 8, 3);
+  ctx.fill();
+
+  // Wheels
+  ctx.fillStyle = '#222';
+  ctx.shadowColor = '#00ff41';
+  ctx.shadowBlur = 4;
+  [-10, 10].forEach(wx => {
+    [-8, 8].forEach(wy => {
+      ctx.beginPath();
+      ctx.ellipse(wx, wy, 5, 3.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      // wheel rim
+      ctx.strokeStyle = '#00ff41';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  });
+
+  // Headlights
+  ctx.fillStyle = '#ffb300';
+  ctx.shadowColor = '#ffb300';
+  ctx.shadowBlur = 10;
+  ctx.beginPath();
+  ctx.ellipse(18, -3, 3, 2, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.ellipse(18, 3, 3, 2, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function spawnWind(x, y, angle, spd) {
+  if (spd < 1.5) return;
+  [6, -6].forEach(offset => {
+    particles.push({
+      x: x - Math.cos(angle) * 18 + Math.sin(angle) * offset,
+      y: y - Math.sin(angle) * 18 - Math.cos(angle) * offset,
+      angle: angle,
+      life: 1,
+      decay: 0.08,
+      length: 18 + spd * 1.5,
+    });
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Smooth follow
+  carX += (mouseX - carX) * 0.12;
+  carY += (mouseY - carY) * 0.12;
+
+  // Speed
+  const dx = carX - lastX, dy = carY - lastY;
+  speed = Math.sqrt(dx * dx + dy * dy);
+  lastX = carX; lastY = carY;
+
+  // Angle
+  const angle = speed > 0.5 ? Math.atan2(dy, dx) : 0;
+
+  // Wind particles
+  if (speed > 1) spawnWind(carX, carY, angle, speed);
+
+  // Draw particles
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.life -= p.decay;
+
+    ctx.save();
+    ctx.globalAlpha = p.life;
+    ctx.strokeStyle = '#00ff41';
+    ctx.shadowColor = '#00ff41';
+    ctx.shadowBlur = 6;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(
+      p.x - Math.cos(p.angle) * p.length * p.life,
+      p.y - Math.sin(p.angle) * p.length * p.life
+    );
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  // Draw car
+  drawCar(carX, carY, angle, speed);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+    /* ── Boot clock ── */
+    function updateBootClock() {
+      const el = document.getElementById('boot-time');
+      if (!el) return;
+      const now = new Date();
+      el.textContent = now.toTimeString().slice(0,8);
+    }
+    setInterval(updateBootClock, 1000);
+    updateBootClock();
+
+    /* ── Contact form ── */
+    function submitContact() {
+      const name  = document.getElementById('contact-name')?.value.trim();
+      const email = document.getElementById('contact-email')?.value.trim();
+      const msg   = document.getElementById('contact-msg')?.value.trim();
+      const fb    = document.getElementById('contact-feedback');
+
+      if (!name || !email || !msg) {
+        fb.style.display = 'block';
+        fb.style.color = 'var(--amber)';
+        fb.textContent = '⚠ ALL FIELDS REQUIRED';
+        return;
+      }
+
+      // mailto fallback
+      const subject = encodeURIComponent(`Portfolio Contact: ${name}`);
+      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+      window.open(`mailto:bharathrajesh2021@gmail.com?subject=${subject}&body=${body}`);
+
+      fb.style.display = 'block';
+      fb.style.color = 'var(--green)';
+      fb.textContent = '✓ TRANSMISSION INITIATED — CHECK YOUR MAIL APP';
+    }
+  </script>
+
+</body>
+</html>

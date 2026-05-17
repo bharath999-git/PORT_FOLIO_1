@@ -1,0 +1,545 @@
+/* ============================================
+   MASCOTS.CSS — CSS-drawn cartoon mascots
+   ============================================ */
+
+.mascot {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* ── 1. Robot (Hero) ── */
+.mascot-robot .robot-head {
+  width: 44px; height: 36px;
+  background: var(--green-dim);
+  border: 2px solid var(--green);
+  border-radius: 6px 6px 4px 4px;
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--green-glow);
+}
+.mascot-robot .robot-eye {
+  width: 8px; height: 8px;
+  background: var(--bg);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  box-shadow: 0 0 4px var(--green);
+  animation: robotBlink 3s ease-in-out infinite;
+}
+.mascot-robot .robot-eye.left  { left: 8px; }
+.mascot-robot .robot-eye.right { right: 8px; }
+@keyframes robotBlink {
+  0%,94%,100% { transform: scaleY(1); }
+  96%         { transform: scaleY(0.1); }
+}
+.mascot-robot .robot-mouth {
+  width: 20px; height: 5px;
+  background: var(--bg);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 7px; left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+.mascot-robot .robot-mouth::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px; height: 100%;
+  background: var(--green);
+  animation: mouthBit 0.6s steps(3) infinite;
+}
+@keyframes mouthBit {
+  from { transform: translateX(-6px); }
+  to   { transform: translateX(20px); }
+}
+.mascot-robot .robot-body {
+  width: 50px; height: 28px;
+  background: var(--green-dim);
+  border: 2px solid var(--green);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 14px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-robot .robot-arm {
+  width: 10px; height: 20px;
+  background: var(--green-dim);
+  border: 2px solid var(--green);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 18px;
+}
+.mascot-robot .robot-arm.left  { left: 8px; animation: waveArm 1s ease-in-out infinite; transform-origin: top center; }
+.mascot-robot .robot-arm.right { right: 8px; }
+@keyframes waveArm {
+  0%,100% { transform: rotate(-10deg); }
+  50%     { transform: rotate(25deg); }
+}
+.mascot-robot .robot-legs {
+  position: absolute;
+  bottom: 2px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 6px;
+}
+.mascot-robot .robot-leg {
+  width: 12px; height: 14px;
+  background: var(--green-dim);
+  border: 2px solid var(--green);
+  border-radius: 2px;
+}
+.mascot-robot .robot-antenna {
+  width: 2px; height: 10px;
+  background: var(--green);
+  position: absolute;
+  top: 2px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-robot .robot-antenna::after {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--amber);
+  border-radius: 50%;
+  position: absolute;
+  top: -3px; left: -2px;
+  box-shadow: 0 0 6px var(--amber);
+  animation: antennaBlink 1.2s ease-in-out infinite;
+}
+@keyframes antennaBlink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.2; }
+}
+
+/* ── 2. Astronaut (About) ── */
+.mascot-astronaut .astro-helmet {
+  width: 42px; height: 42px;
+  background: rgba(0,229,255,0.15);
+  border: 2px solid var(--c2);
+  border-radius: 50%;
+  position: absolute;
+  top: 4px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0,229,255,0.4);
+  animation: floatAstro 3s ease-in-out infinite;
+}
+@keyframes floatAstro {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%     { transform: translateX(-50%) translateY(-6px); }
+}
+.mascot-astronaut .astro-visor {
+  width: 24px; height: 18px;
+  background: rgba(0,229,255,0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 11px; left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0,229,255,0.6);
+}
+.mascot-astronaut .astro-body {
+  width: 46px; height: 30px;
+  background: rgba(0,229,255,0.12);
+  border: 2px solid var(--c2);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-astronaut .astro-arm {
+  width: 10px; height: 18px;
+  background: rgba(0,229,255,0.12);
+  border: 2px solid var(--c2);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 12px;
+}
+.mascot-astronaut .astro-arm.left  { left: 6px; transform: rotate(15deg); }
+.mascot-astronaut .astro-arm.right { right: 6px; transform: rotate(-15deg); }
+.mascot-astronaut .astro-star {
+  width: 4px; height: 4px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 4px white;
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.1; }
+}
+
+/* ── 3. PC Monitor (CSS Projects) ── */
+.mascot-monitor .monitor-screen {
+  width: 52px; height: 38px;
+  background: rgba(180,79,255,0.12);
+  border: 2px solid var(--c3);
+  border-radius: 4px;
+  position: absolute;
+  top: 4px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(180,79,255,0.4);
+  overflow: hidden;
+}
+.mascot-monitor .monitor-scan {
+  width: 100%; height: 2px;
+  background: var(--c3);
+  opacity: 0.7;
+  position: absolute;
+  animation: scanLine 1.5s linear infinite;
+}
+@keyframes scanLine {
+  from { top: 0; }
+  to   { top: 100%; }
+}
+.mascot-monitor .monitor-face {
+  width: 20px; height: 14px;
+  background: rgba(180,79,255,0.2);
+  border: 1px solid var(--c3);
+  border-radius: 3px;
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2px 4px;
+}
+.mascot-monitor .mon-eye {
+  width: 4px; height: 4px;
+  background: var(--c3);
+  border-radius: 50%;
+}
+.mascot-monitor .monitor-stand {
+  width: 6px; height: 14px;
+  background: var(--c3);
+  position: absolute;
+  bottom: 14px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-monitor .monitor-base {
+  width: 32px; height: 5px;
+  background: var(--c3);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-monitor .monitor-hands {
+  width: 8px; height: 8px;
+  background: rgba(180,79,255,0.3);
+  border: 1px solid var(--c3);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 24px;
+  animation: typeHands 0.4s ease-in-out infinite alternate;
+}
+.mascot-monitor .monitor-hands.left  { left: 6px; }
+.mascot-monitor .monitor-hands.right { right: 6px; }
+@keyframes typeHands {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+/* ── 4. Lightbulb (Simulations) ── */
+.mascot-bulb .bulb-glass {
+  width: 36px; height: 36px;
+  background: rgba(255,179,0,0.15);
+  border: 2px solid var(--c4);
+  border-radius: 50% 50% 40% 40%;
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 16px rgba(255,179,0,0.5);
+  animation: bulbGlow 1.5s ease-in-out infinite;
+}
+@keyframes bulbGlow {
+  0%,100% { box-shadow: 0 0 16px rgba(255,179,0,0.5); }
+  50%     { box-shadow: 0 0 28px rgba(255,179,0,0.9); }
+}
+.mascot-bulb .bulb-shine {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  position: absolute;
+  top: 14px; left: 50%;
+  transform: translateX(-70%);
+}
+.mascot-bulb .bulb-base {
+  width: 22px; height: 16px;
+  background: var(--c4);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 14px; left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+}
+.mascot-bulb .bulb-filament {
+  width: 14px; height: 10px;
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  border: 1.5px solid var(--amber);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+.mascot-bulb .bulb-circuit {
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 4px;
+}
+.mascot-bulb .circuit-dot {
+  width: 4px; height: 4px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 4px var(--amber);
+  animation: circuitPulse 0.8s ease-in-out infinite;
+}
+.mascot-bulb .circuit-dot:nth-child(2) { animation-delay: 0.2s; }
+.mascot-bulb .circuit-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes circuitPulse {
+  0%,100% { opacity: 0.3; transform: scale(1); }
+  50%     { opacity: 1; transform: scale(1.3); }
+}
+
+/* ── 5. Trophy (Hackathons) ── */
+.mascot-trophy .trophy-cup {
+  width: 34px; height: 30px;
+  background: rgba(255,215,0,0.15);
+  border: 2px solid var(--c5);
+  border-radius: 40% 40% 50% 50%;
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 14px rgba(255,215,0,0.5);
+}
+.mascot-trophy .trophy-handle {
+  width: 10px; height: 12px;
+  border: 2px solid var(--c5);
+  border-radius: 50%;
+  position: absolute;
+  top: 16px;
+}
+.mascot-trophy .trophy-handle.left  { left: 4px; border-right: none; }
+.mascot-trophy .trophy-handle.right { right: 4px; border-left: none; }
+.mascot-trophy .trophy-stem {
+  width: 6px; height: 14px;
+  background: var(--c5);
+  position: absolute;
+  bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-trophy .trophy-base {
+  width: 30px; height: 6px;
+  background: var(--c5);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-trophy .trophy-star {
+  position: absolute;
+  top: 14px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--c5);
+  font-size: 0.8rem;
+  animation: starSpin 2s linear infinite;
+}
+@keyframes starSpin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+.mascot-trophy .confetti {
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 1px;
+}
+.mascot-trophy .confetti:nth-child(1) { background: var(--c5); top: 2px; left: 14px; animation: confettiFall 1.8s ease-in-out infinite; }
+.mascot-trophy .confetti:nth-child(2) { background: var(--c3); top: 0px; left: 22px; animation: confettiFall 1.8s ease-in-out infinite 0.3s; }
+.mascot-trophy .confetti:nth-child(3) { background: var(--c2); top: 2px; left: 30px; animation: confettiFall 1.8s ease-in-out infinite 0.6s; }
+.mascot-trophy .confetti:nth-child(4) { background: var(--c6); top: 0px; left: 6px;  animation: confettiFall 1.8s ease-in-out infinite 0.9s; }
+@keyframes confettiFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(30px) rotate(180deg); opacity: 0; }
+}
+
+/* ── 6. Race Car (Go-kart) ── */
+.mascot-car .car-body {
+  width: 54px; height: 22px;
+  background: rgba(255,51,51,0.2);
+  border: 2px solid var(--c6);
+  border-radius: 4px 10px 4px 4px;
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(255,51,51,0.4);
+  animation: carZoom 0.15s ease-in-out infinite alternate;
+}
+@keyframes carZoom {
+  from { transform: translateX(-50%) translateY(0); }
+  to   { transform: translateX(-50%) translateY(-1px); }
+}
+.mascot-car .car-cockpit {
+  width: 20px; height: 14px;
+  background: rgba(255,51,51,0.15);
+  border: 1px solid var(--c6);
+  border-radius: 3px 6px 0 0;
+  position: absolute;
+  bottom: 34px; left: 50%;
+  transform: translateX(-20%);
+}
+.mascot-car .car-wheel {
+  width: 14px; height: 14px;
+  background: #222;
+  border: 2px solid var(--c6);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 12px;
+  animation: wheelSpin 0.4s linear infinite;
+}
+.mascot-car .car-wheel::after {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--c6);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.mascot-car .car-wheel.front { left: 8px; }
+.mascot-car .car-wheel.rear  { right: 8px; }
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.mascot-car .car-exhaust {
+  position: absolute;
+  bottom: 24px; left: 4px;
+  display: flex; gap: 2px;
+}
+.mascot-car .exhaust-puff {
+  width: 6px; height: 6px;
+  background: rgba(255,51,51,0.3);
+  border-radius: 50%;
+  animation: puffDrift 0.6s ease-out infinite;
+}
+.mascot-car .exhaust-puff:nth-child(2) { animation-delay: 0.2s; }
+.mascot-car .exhaust-puff:nth-child(3) { animation-delay: 0.4s; }
+@keyframes puffDrift {
+  0%   { transform: translateX(0) scale(0.5); opacity: 0.8; }
+  100% { transform: translateX(-14px) scale(1.5); opacity: 0; }
+}
+
+/* ── 7. Toolbox (Skills) ── */
+.mascot-toolbox .toolbox-body {
+  width: 48px; height: 30px;
+  background: rgba(68,136,255,0.12);
+  border: 2px solid var(--c7);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(68,136,255,0.3);
+}
+.mascot-toolbox .toolbox-handle {
+  width: 22px; height: 10px;
+  border: 2px solid var(--c7);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  position: absolute;
+  bottom: 44px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-toolbox .toolbox-latch {
+  width: 12px; height: 5px;
+  background: var(--c7);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-toolbox .tool {
+  position: absolute;
+  background: var(--c7);
+}
+.mascot-toolbox .tool-wrench {
+  width: 3px; height: 16px;
+  border-radius: 1px;
+  bottom: 28px; left: 18px;
+  transform: rotate(20deg);
+  animation: toolBounce 1s ease-in-out infinite;
+}
+.mascot-toolbox .tool-screwdriver {
+  width: 3px; height: 14px;
+  border-radius: 1px;
+  bottom: 28px; right: 18px;
+  transform: rotate(-20deg);
+  animation: toolBounce 1s ease-in-out infinite 0.3s;
+}
+@keyframes toolBounce {
+  0%,100% { transform: rotate(20deg) translateY(0); }
+  50%     { transform: rotate(20deg) translateY(-4px); }
+}
+
+/* ── 8. Radio Antenna (Contact) ── */
+.mascot-radio .radio-body {
+  width: 44px; height: 32px;
+  background: rgba(0,255,65,0.1);
+  border: 2px solid var(--c8);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--green-glow);
+}
+.mascot-radio .radio-antenna {
+  width: 2px; height: 30px;
+  background: var(--c8);
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-radio .radio-antenna::before {
+  content: '';
+  width: 14px; height: 2px;
+  background: var(--c8);
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+}
+.mascot-radio .signal-ring {
+  position: absolute;
+  border: 1.5px solid var(--c8);
+  border-radius: 50%;
+  bottom: 64px; left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  animation: signalPulse 1.8s ease-out infinite;
+}
+.mascot-radio .signal-ring:nth-child(1) { width: 12px; height: 8px; }
+.mascot-radio .signal-ring:nth-child(2) { width: 20px; height: 14px; animation-delay: 0.3s; }
+.mascot-radio .signal-ring:nth-child(3) { width: 28px; height: 20px; animation-delay: 0.6s; }
+@keyframes signalPulse {
+  0%   { transform: translateX(-50%) scale(0); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.5); opacity: 0; }
+}
+.mascot-radio .radio-led {
+  width: 5px; height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px; left: 10px;
+  box-shadow: 0 0 6px var(--green);
+  animation: cursorPulse 1s ease-in-out infinite;
+}
+.mascot-radio .radio-dial {
+  width: 10px; height: 10px;
+  border: 1.5px solid var(--c8);
+  border-radius: 50%;
+  position: absolute;
+  top: 7px; right: 9px;
+}

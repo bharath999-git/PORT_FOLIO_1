@@ -1,0 +1,228 @@
+/* ============================================
+   BOOT.CSS — Intro boot sequence styles
+   ============================================ */
+
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#boot-screen.fade-out {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.boot-container {
+  width: 100%;
+  max-width: 720px;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+}
+
+/* ── Header bar ── */
+.boot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--green-dim);
+  padding: 8px 16px;
+  margin-bottom: 0;
+  color: var(--green-dim);
+  font-size: 0.85rem;
+}
+
+.boot-header .blink { color: var(--green); }
+
+/* ── Log area ── */
+.boot-log {
+  border: 1px solid var(--green-dim);
+  border-top: none;
+  padding: 1.5rem;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.boot-log::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 80%, var(--bg) 100%);
+  pointer-events: none;
+}
+
+.log-line {
+  display: block;
+  color: var(--green);
+  line-height: 1.9;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.log-line.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.log-line .log-ok   { color: var(--green); }
+.log-line .log-warn { color: var(--amber); }
+.log-line .log-fail { color: #ff4444; }
+.log-line .log-dim  { color: var(--green-dim); opacity: 0.6; }
+
+/* ── Progress bar ── */
+.boot-progress-wrap {
+  border: 1px solid var(--green-dim);
+  border-top: none;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boot-progress-label {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--green-dim);
+  min-width: 80px;
+}
+
+.boot-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(0,255,65,0.1);
+  border: 1px solid var(--green-dim);
+  position: relative;
+  overflow: hidden;
+}
+
+.boot-progress-fill {
+  height: 100%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  width: 0%;
+  transition: width 0.15s linear;
+  position: relative;
+}
+
+.boot-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background: white;
+  opacity: 0.6;
+  filter: blur(4px);
+}
+
+.boot-progress-pct {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--green);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ── Title slam ── */
+.boot-title-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9991;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-title-screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.boot-name {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  font-weight: 900;
+  color: var(--green);
+  text-shadow: 0 0 20px var(--green), 0 0 60px var(--green-glow);
+  letter-spacing: 0.08em;
+  text-align: center;
+  transform: scale(0.6);
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s;
+  opacity: 0;
+}
+
+.boot-title-screen.slam .boot-name {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.boot-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--amber);
+  letter-spacing: 0.15em;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+}
+
+.boot-title-screen.slam .boot-tagline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.boot-prompt {
+  margin-top: 3rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--green-dim);
+  letter-spacing: 0.2em;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.8s;
+}
+
+.boot-title-screen.slam .boot-prompt {
+  opacity: 1;
+}
+
+/* Glitch flash overlay */
+.glitch-flash {
+  position: fixed;
+  inset: 0;
+  background: var(--green);
+  z-index: 9995;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-flash.flash {
+  animation: flashAnim 0.4s ease forwards;
+}
+
+@keyframes flashAnim {
+  0%   { opacity: 0.8; }
+  30%  { opacity: 0; }
+  50%  { opacity: 0.4; }
+  70%  { opacity: 0; }
+  85%  { opacity: 0.2; }
+  100% { opacity: 0; }
+}

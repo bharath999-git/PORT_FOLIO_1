@@ -1,0 +1,238 @@
+/* ============================================
+   BASE.CSS — Reset, Variables, Typography, CRT
+   BOOT SEQUENCE — Bharath R Portfolio
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  /* Core palette */
+  --bg:          #0a0c0a;
+  --bg2:         #0d110d;
+  --green:       #00ff41;
+  --green-dim:   #00aa2b;
+  --green-glow:  rgba(0,255,65,0.35);
+  --amber:       #ffb300;
+  --amber-dim:   #cc8800;
+  --white:       #e8ffe8;
+  --grey:        #3a3a3a;
+  --grey-light:  #888;
+
+  /* Section accent colors */
+  --c1: #00ff41;   /* Hero — green */
+  --c2: #00e5ff;   /* About — cyan */
+  --c3: #b44fff;   /* CSS Projects — purple */
+  --c4: #ffb300;   /* Simulations — amber */
+  --c5: #ffd700;   /* Hackathons — gold */
+  --c6: #ff3333;   /* Go-kart — red */
+  --c7: #4488ff;   /* Skills — blue */
+  --c8: #00ff41;   /* Contact — green */
+
+  /* Typography */
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-display: 'VT323', monospace;
+  --font-head:    'Orbitron', sans-serif;
+
+  /* Spacing */
+  --section-pad: clamp(2rem, 6vw, 5rem);
+
+  /* Transitions */
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--green);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+
+/* ── Custom Cursor ── */
+#cursor {
+  position: fixed;
+  width: 24px; height: 24px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+}
+#cursor::before, #cursor::after {
+  content: '';
+  position: absolute;
+  background: var(--green);
+}
+#cursor::before {
+  width: 2px; height: 24px;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+}
+#cursor::after {
+  width: 24px; height: 2px;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+}
+#cursor .dot {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--green);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 6px var(--green);
+  animation: cursorPulse 1.2s ease-in-out infinite;
+}
+@keyframes cursorPulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 6px var(--green); }
+  50%      { opacity: 0.4; box-shadow: 0 0 16px var(--green); }
+}
+
+/* ── CRT Scanline Overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0,0,0,0.18) 2px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Grain / noise overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.35;
+}
+
+/* ── Animated Grid Background ── */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,65,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  animation: gridDrift 20s linear infinite;
+}
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 40px; }
+}
+
+/* ── Typography ── */
+h1 { font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 900; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; }
+h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 400; }
+
+p  { font-family: var(--font-mono); font-size: 1.08rem; opacity: 0.85; }
+
+.terminal-text { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.02em; }
+
+/* ── Glow utilities ── */
+.glow-green { text-shadow: 0 0 10px var(--green), 0 0 30px var(--green-glow); }
+.glow-amber { text-shadow: 0 0 10px var(--amber), 0 0 30px rgba(255,179,0,0.4); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* ── Selection ── */
+::selection { background: var(--green); color: var(--bg); }
+
+/* ── Utility ── */
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+a { color: inherit; text-decoration: none; }
+button { cursor: none; border: none; background: none; font-family: var(--font-mono); }
+img { max-width: 100%; display: block; }
+
+/* Section wrapper */
+.section-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: var(--section-pad);
+}
+
+/* Section header badge */
+.section-tag {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  padding: 4px 14px;
+  border: 1px solid currentColor;
+  display: inline-block;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+/* Blinking cursor effect */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* Glitch text effect */
+.glitch {
+  position: relative;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.glitch::before {
+  color: var(--amber);
+  animation: glitch1 3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+.glitch::after {
+  color: #00e5ff;
+  animation: glitch2 3s infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+@keyframes glitch1 {
+  0%,90%,100% { transform: translate(0); }
+  92% { transform: translate(-3px, 1px); }
+  94% { transform: translate(3px, -1px); }
+  96% { transform: translate(-2px, 2px); }
+}
+@keyframes glitch2 {
+  0%,90%,100% { transform: translate(0); }
+  92% { transform: translate(3px, -1px); }
+  94% { transform: translate(-3px, 1px); }
+  96% { transform: translate(2px, -2px); }
+}
